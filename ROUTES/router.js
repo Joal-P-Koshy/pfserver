@@ -4,6 +4,7 @@
 const userController = require('../CONTROLLERs/userController')
 const projectController = require('../CONTROLLERs/projectController')
 const jwtMiddleware = require('../Middlewares/jwtMiddleware')
+const multerConfig = require('../Middlewares/multerMiddleware')
 
 // 1) import express
 
@@ -19,7 +20,7 @@ router.post('/user/register', userController.register);
 
 router.post('/user/login',userController.login);
 
-router.post('/project/add', jwtMiddleware, projectController.addProject)
+router.post('/project/add', jwtMiddleware,multerConfig.single('projectImage'), projectController.addProject)
 
 // 4) export rounter
 
