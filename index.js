@@ -1,5 +1,6 @@
 
-const router = require('./ROUTES/router')
+const router = require('./ROUTES/router');
+const appMiddleware = require ('./Middlewares/appMiddleware');
 
 // import dotenv
 require('dotenv').config()
@@ -21,6 +22,8 @@ pfServer.use(cors())
 
 // use a middleware, to convert json to javascript object
 pfServer.use(express.json());
+
+// pfServer.use(appMiddleware);
 
 pfServer.use(router);
 
